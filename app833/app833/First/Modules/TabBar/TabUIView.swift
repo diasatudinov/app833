@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TabUIView: View {
+
     @State var selectedTab = 0
     private let tabs = ["Main", "Game", "ACHIEVEMENT","Settings"]
     
@@ -25,7 +26,7 @@ struct TabUIView: View {
                 Text("GAME")
                 //TripsUIView(viewModel: tripsVM)
             case 2:
-                Text("ACHIEVEMENT")
+                AchievementUIView(viewModel: AchievementViewModel())
                 //SettingsUIView()
             case 3:
                 SettingsUIView()
@@ -51,7 +52,7 @@ struct TabUIView: View {
                                     
                                     ZStack {
                                         Image(systemName: icon(for: index))
-                                            .foregroundColor(selectedTab == index ? Color.onboardingBtn : Color.black.opacity(0.05))
+                                            .foregroundColor(selectedTab == index ? Color.main : Color.black.opacity(0.05))
                                             .font(.system(size: 22))
                                     }
                                 }
