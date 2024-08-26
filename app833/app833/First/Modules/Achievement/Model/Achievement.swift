@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+struct Achievement: Identifiable, Hashable, Codable {
+    var id = UUID()
+    let iconImage: String
+    let image: String
+    let text: String
+    let description: String
+    var complite: Bool
+}
