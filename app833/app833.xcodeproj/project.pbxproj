@@ -17,6 +17,9 @@
 		2BCD93832C74D0040021A6F6 /* TabUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCD93822C74D0040021A6F6 /* TabUIView.swift */; };
 		2BCD93882C74D6510021A6F6 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCD93872C74D6510021A6F6 /* SettingsViewModel.swift */; };
 		2BCD938A2C74D6730021A6F6 /* SettingsUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCD93892C74D6730021A6F6 /* SettingsUIView.swift */; };
+		2BCD93902C7C9E580021A6F6 /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCD938F2C7C9E580021A6F6 /* Achievement.swift */; };
+		2BCD93922C7C9EA30021A6F6 /* AchievementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCD93912C7C9EA30021A6F6 /* AchievementViewModel.swift */; };
+		2BCD93942C7C9FEE0021A6F6 /* AchievementUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCD93932C7C9FEE0021A6F6 /* AchievementUIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +34,9 @@
 		2BCD93822C74D0040021A6F6 /* TabUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabUIView.swift; sourceTree = "<group>"; };
 		2BCD93872C74D6510021A6F6 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		2BCD93892C74D6730021A6F6 /* SettingsUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsUIView.swift; sourceTree = "<group>"; };
+		2BCD938F2C7C9E580021A6F6 /* Achievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achievement.swift; sourceTree = "<group>"; };
+		2BCD93912C7C9EA30021A6F6 /* AchievementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementViewModel.swift; sourceTree = "<group>"; };
+		2BCD93932C7C9FEE0021A6F6 /* AchievementUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +107,7 @@
 		2BCD93762C74B7970021A6F6 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				2BCD938B2C7C9E280021A6F6 /* Achievement */,
 				2BCD93842C74D62C0021A6F6 /* Settings */,
 				2BCD93812C74CFF60021A6F6 /* TabBar */,
 				2BCD93782C74B7A20021A6F6 /* Onboarding */,
@@ -171,6 +178,40 @@
 				2BCD93892C74D6730021A6F6 /* SettingsUIView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		2BCD938B2C7C9E280021A6F6 /* Achievement */ = {
+			isa = PBXGroup;
+			children = (
+				2BCD938E2C7C9E4E0021A6F6 /* Model */,
+				2BCD938D2C7C9E470021A6F6 /* View */,
+				2BCD938C2C7C9E300021A6F6 /* ViewModel */,
+			);
+			path = Achievement;
+			sourceTree = "<group>";
+		};
+		2BCD938C2C7C9E300021A6F6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2BCD93912C7C9EA30021A6F6 /* AchievementViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2BCD938D2C7C9E470021A6F6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2BCD93932C7C9FEE0021A6F6 /* AchievementUIView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2BCD938E2C7C9E4E0021A6F6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2BCD938F2C7C9E580021A6F6 /* Achievement.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,10 +288,13 @@
 				2BCD938A2C74D6730021A6F6 /* SettingsUIView.swift in Sources */,
 				2BCD93802C74B8C10021A6F6 /* LoaderUIView.swift in Sources */,
 				2BCD93832C74D0040021A6F6 /* TabUIView.swift in Sources */,
+				2BCD93922C7C9EA30021A6F6 /* AchievementViewModel.swift in Sources */,
 				2BCD93672C74B2EC0021A6F6 /* app833App.swift in Sources */,
+				2BCD93942C7C9FEE0021A6F6 /* AchievementUIView.swift in Sources */,
 				2BCD937D2C74B83C0021A6F6 /* UsUIView.swift in Sources */,
 				2BCD937B2C74B7BF0021A6F6 /* ReOnboardingUIView.swift in Sources */,
 				2BCD93882C74D6510021A6F6 /* SettingsViewModel.swift in Sources */,
+				2BCD93902C7C9E580021A6F6 /* Achievement.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
