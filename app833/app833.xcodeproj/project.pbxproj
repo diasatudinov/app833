@@ -20,6 +20,7 @@
 		2BCD93902C7C9E580021A6F6 /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCD938F2C7C9E580021A6F6 /* Achievement.swift */; };
 		2BCD93922C7C9EA30021A6F6 /* AchievementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCD93912C7C9EA30021A6F6 /* AchievementViewModel.swift */; };
 		2BCD93942C7C9FEE0021A6F6 /* AchievementUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCD93932C7C9FEE0021A6F6 /* AchievementUIView.swift */; };
+		2BF280412C7F47E400336415 /* GameUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF280402C7F47E400336415 /* GameUIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		2BCD938F2C7C9E580021A6F6 /* Achievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achievement.swift; sourceTree = "<group>"; };
 		2BCD93912C7C9EA30021A6F6 /* AchievementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementViewModel.swift; sourceTree = "<group>"; };
 		2BCD93932C7C9FEE0021A6F6 /* AchievementUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementUIView.swift; sourceTree = "<group>"; };
+		2BF280402C7F47E400336415 /* GameUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 		2BCD93762C74B7970021A6F6 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				2BF2803C2C7F342600336415 /* Game */,
 				2BCD938B2C7C9E280021A6F6 /* Achievement */,
 				2BCD93842C74D62C0021A6F6 /* Settings */,
 				2BCD93812C74CFF60021A6F6 /* TabBar */,
@@ -214,6 +217,38 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		2BF2803C2C7F342600336415 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				2BF2803F2C7F344200336415 /* Model */,
+				2BF2803E2C7F343E00336415 /* View */,
+				2BF2803D2C7F343700336415 /* ViewModel */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		2BF2803D2C7F343700336415 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2BF2803E2C7F343E00336415 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2BF280402C7F47E400336415 /* GameUIView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2BF2803F2C7F344200336415 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -294,6 +329,7 @@
 				2BCD937D2C74B83C0021A6F6 /* UsUIView.swift in Sources */,
 				2BCD937B2C74B7BF0021A6F6 /* ReOnboardingUIView.swift in Sources */,
 				2BCD93882C74D6510021A6F6 /* SettingsViewModel.swift in Sources */,
+				2BF280412C7F47E400336415 /* GameUIView.swift in Sources */,
 				2BCD93902C7C9E580021A6F6 /* Achievement.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
