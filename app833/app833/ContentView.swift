@@ -8,110 +8,82 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var selectedButton: Int? = 0
-    
-    let emojis = ["😀", "😃", "😄", "😁", "😆", "😅", "😂", "🤣"]
+    @State private var showInputSheet = false
+    @State private var firstName: String = ""
+    @State private var lastName: String = ""
+    @State private var patronymic: String = ""
+    @State private var isInputComplete = false
     
     var body: some View {
-        ZStack {
+        VStack {
+            if isInputComplete {
+                // Display the user's input after submission
+                Text("First Name: \(firstName)")
+                Text("Last Name: \(lastName)")
+                Text("Patronymic: \(patronymic)")
+            } else {
+                Text("No name entered yet.")
+                    .padding()
+            }
             
-            Color.blue
-                .edgesIgnoringSafeArea(.all)
-            
-            HStack {
-                // Кнопки
-                ZStack {
-                    Rectangle()
-                        .cornerRadius(30)
-                        .frame(width: 190)
-                        .foregroundColor(Color.white)
-                        .padding(.leading,-30)
-                    
-                    if let selectedButton = selectedButton {
-                        HStack(spacing: 0) {
-                            Rectangle()
-                                .cornerRadius(30)
-                                .foregroundColor(Color.white)
-                            Rectangle()
-                                .cornerRadius(30)
-                                .foregroundColor(Color.blue)
-                            
-                        }.frame(width: 146).padding(.leading, 14)
-                    } else {
-                        Rectangle()
-                            .cornerRadius(30)
-                            .frame(width: 190)
-                            .foregroundColor(Color.white)
-                            .padding(.leading,-30)
-                        
-                    }
-                    
-                    VStack(spacing: 0) {
-                        ForEach(0..<5) { index in
-                            ZStack {
-                                if selectedButton == index {
-                                    if selectedButton == 0 {
-                                        Rectangle()
-                                            .frame(width: 154)
-                                            .foregroundColor(Color.blue)
-                                            .cornerRadius(30, corners: [.bottomLeft])
-                                    } else if selectedButton == 4 {
-                                        Rectangle()
-                                            .frame(width: 154)
-                                            .foregroundColor(Color.blue)
-                                            .cornerRadius(30, corners: [.topLeft])
-                                    } else {
-                                        Rectangle()
-                                            .frame(width: 154)
-                                            .foregroundColor(Color.blue)
-                                            .cornerRadius(30)
-                                    }
-                                    
-                                } else {
-                                    Rectangle()
-                                        .frame(width: 154)
-                                        .foregroundColor(Color.white)
-                                    
-                                }
-                                Rectangle()
-                                    .frame(width: 154)
-                                    .foregroundColor(self.selectedButton == index ? Color.blue : Color.white)
-                                    .cornerRadius(30)
-                                
-                                Text("Button \(index + 1)")
-                                    .frame(width: 144)
-                                    .foregroundColor(self.selectedButton == index ? Color.white : Color.black)
-                                    .cornerRadius(8)
-                                    .padding(.vertical, 10)
-                                
-                            }.onTapGesture {
-                                withAnimation {
-                                    self.selectedButton = index
-                                }
-                                
-                            }
-                            
-                            
-                        }
-                    }.padding(.leading,7)
-                }.cornerRadius(30, corners: [.bottomRight, .topRight])
-                    .padding(.top, 25)
-                    .padding(.bottom, 105)
+            // Button to trigger the input sheet
+            Button("Enter Name") {
+                showInputSheet.toggle()
+            }
+            .padding()
+            .background(Color.blue)
+            .foregroundColor(.white)
+            .cornerRadius(8)
+        }
+        .sheet(isPresented: $showInputSheet) {
+            InputForm(
+                firstName: $firstName,
+                lastName: $lastName,
+                patronymic: $patronymic,
+                isInputComplete: $isInputComplete,
+                showInputSheet: $showInputSheet
+            )
+        }
+    }
+}
+
+struct InputForm: View {
+    @Binding var firstName: String
+    @Binding var lastName: String
+    @Binding var patronymic: String
+    @Binding var isInputComplete: Bool
+    @Binding var showInputSheet: Bool
+    
+    var body: some View {
+        NavigationView {
+            VStack {
+                TextField("First Name", text: $firstName)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
                 
+                TextField("Last Name", text: $lastName)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
                 
-                Spacer()
+                TextField("Patronymic", text: $patronymic)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
                 
-                if let selectedButton = selectedButton {
-                    VStack {
-                        
-                        Image("image5On")
-                            .padding(.trailing, -15)
-                        
-                    }
-                    .transition(.opacity) // Переход для анимации появления
+                Button("Submit") {
+                    isInputComplete = true
+                    showInputSheet = false
                 }
+                .padding()
+                .background(Color.blue)
+                .foregroundColor(.white)
+                .cornerRadius(8)
+                
                 Spacer()
             }
+            .navigationTitle("Enter Your Name")
+            .navigationBarItems(trailing: Button("Cancel") {
+                showInputSheet = false
+            })
         }
     }
 }

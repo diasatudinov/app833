@@ -23,7 +23,7 @@ struct TabUIView: View {
                 Text("MAIN")
                 //StatisticsUIView(viewModel: profileVM)
             case 1:
-                Text("GAME")
+                GameUIView(viewModel: GameViewModel())
                 //TripsUIView(viewModel: tripsVM)
             case 2:
                 AchievementUIView(viewModel: AchievementViewModel())
