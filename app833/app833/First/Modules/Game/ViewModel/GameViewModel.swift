@@ -27,16 +27,21 @@ class GameViewModel: ObservableObject {
         }
     }
     
-    @Published var graph: Graph = Graph(first: "-", second: "-", third: "-")
+    @Published var graph: Graph = Graph(first: "-", second: "-", third: "-") {
+        didSet {
+            saveGraph()
+        }
+    }
     
     func saveGraph(for graph: Graph) {
         self.graph = graph
     }
     
     private let gamesFileName = "games.json"
-    
+    private let graphFileName = "graph.json"
     init() {
         loadGames()
+        loadGraph()
     }
     
     private func getDocumentsDirectory() -> URL {
@@ -48,12 +53,28 @@ class GameViewModel: ObservableObject {
         return getDocumentsDirectory().appendingPathComponent(gamesFileName)
     }
     
+    private func graphFilePath() -> URL {
+        return getDocumentsDirectory().appendingPathComponent(graphFileName)
+    }
+    
     private func saveGames() {
         DispatchQueue.global().async {
             let encoder = JSONEncoder()
             do {
                 let data = try encoder.encode(self.games)
                 try data.write(to: self.gamesFilePath())
+            } catch {
+                print("Failed to save players: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    private func saveGraph() {
+        DispatchQueue.global().async {
+            let encoder = JSONEncoder()
+            do {
+                let data = try encoder.encode(self.graph)
+                try data.write(to: self.graphFilePath())
             } catch {
                 print("Failed to save players: \(error.localizedDescription)")
             }
@@ -70,6 +91,15 @@ class GameViewModel: ObservableObject {
         }
     }
     
+    private func loadGraph() {
+        let decoder = JSONDecoder()
+        do {
+            let data = try Data(contentsOf: graphFilePath())
+            graph = try decoder.decode(Graph.self, from: data)
+        } catch {
+            print("Failed to load players: \(error.localizedDescription)")
+        }
+    }
     
     func hitsTotal(for game: Game) -> String {
         var sum = 0
@@ -93,5 +123,49 @@ class GameViewModel: ObservableObject {
         }
         
         return "\(sum)"
+    }
+    
+    func vaporQuantity(for game: Game) -> Int {
+        var sum = 0
+        if let index = games.firstIndex(where: { $0.id == game.id }) {
+            games[index].stats.forEach { stat in
+                sum += stat.par
+                
+            }
+        }
+        
+        return sum
+    }
+    
+    func vaporBeats(for game: Game) -> String {
+        var sum = 0
+        if let index = games.firstIndex(where: { $0.id == game.id }) {
+            games[index].stats.forEach { stat in
+                sum += stat.stroke
+                
+            }
+        }
+        
+        return "\(sum)"
+    }
+    
+    func addGame(for game: Game) {
+        games.append(game)
+    }
+    
+    func deleteGame(for game: Game) {
+        if let index = games.firstIndex(where: { $0.id == game.id }) {
+            games.remove(at: index)
+            
+        }
+        
+    }
+    
+    func editGame(for game: Game, stats: [Stat]) {
+        if let index = games.firstIndex(where: { $0.id == game.id }) {
+            games[index].stats.append(contentsOf: stats)
+            
+        }
+        
     }
 }

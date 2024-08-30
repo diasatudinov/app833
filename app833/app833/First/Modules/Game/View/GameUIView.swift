@@ -14,13 +14,14 @@ enum Tab {
 struct GameUIView: View {
     @ObservedObject var viewModel: GameViewModel
     @State private var selectedTab: Tab = .weekly
-    @State private var showSheet = true
+    @State private var showAddSheet = false
     @State private var isSheetPresented = false
 
     @State private var statisticsAlert = false
     @State private var first: String = ""
     @State private var second: String = ""
     @State private var third: String = ""
+    
     
     var body: some View {
         ZStack {
@@ -36,22 +37,22 @@ struct GameUIView: View {
                     Text("Weekly").tag(Tab.weekly)
                     Text("All time").tag(Tab.allTime)
                 }.padding(.horizontal).frame(height: 41)
-                .pickerStyle(SegmentedPickerStyle())
-                .onAppear {
-                    //UISegmentedControl.appearance().selectedSegmentTintColor = UIColor.gray
-                    
-                    let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-                    let titleTextAttributesSelected = [NSAttributedString.Key.foregroundColor: UIColor.main]
-                    UISegmentedControl.appearance().setTitleTextAttributes(titleTextAttributes, for: .normal)
-                    UISegmentedControl.appearance().setTitleTextAttributes(titleTextAttributesSelected, for: .selected)
-                }
+                    .pickerStyle(SegmentedPickerStyle())
+                    .onAppear {
+                        //UISegmentedControl.appearance().selectedSegmentTintColor = UIColor.gray
+                        
+                        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+                        let titleTextAttributesSelected = [NSAttributedString.Key.foregroundColor: UIColor.main]
+                        UISegmentedControl.appearance().setTitleTextAttributes(titleTextAttributes, for: .normal)
+                        UISegmentedControl.appearance().setTitleTextAttributes(titleTextAttributesSelected, for: .selected)
+                    }
                 Spacer()
                 HStack {
                     Spacer()
                     Button {
-                    first = ""
-                    second = ""
-                    third = ""
+                        first = ""
+                        second = ""
+                        third = ""
                         statisticsAlert = true
                     } label: {
                         ZStack {
@@ -117,7 +118,7 @@ struct GameUIView: View {
                 
             }
             ZStack {
-                HalfScreenSheetView(viewModel: viewModel, isPresented: $isSheetPresented, selectedTab: $selectedTab)
+                HalfScreenSheetView(viewModel: viewModel, isPresented: $isSheetPresented, selectedTab: $selectedTab, showAddSheet: $showAddSheet)
                     .transition(.move(edge: .bottom))
                     .animation(.easeInOut)
                 
@@ -168,6 +169,9 @@ struct GameUIView: View {
                 }.padding(.horizontal, 60)
                 
             }
+        
+        }.sheet(isPresented: $showAddSheet) {
+            GameAddUIView(viewModel: viewModel, openNewGameSheet: $showAddSheet)
         }
     }
 }
@@ -180,6 +184,8 @@ struct HalfScreenSheetView: View {
     @ObservedObject var viewModel: GameViewModel
     @Binding var isPresented: Bool
     @Binding var selectedTab: Tab
+    @Binding var showAddSheet: Bool
+    
     var body: some View {
         ZStack {
             VStack {
@@ -216,7 +222,7 @@ struct HalfScreenSheetView: View {
                         Spacer()
                         
                         Button {
-                            
+                            showAddSheet = true
                         } label: {
                             ZStack {
                                 Rectangle()
@@ -241,7 +247,7 @@ struct HalfScreenSheetView: View {
                     } else {
                         ScrollView {
                             ForEach(viewModel.games , id: \.self) { game in
-                                GameCellUIView(date: game.data, hits: viewModel.hitsTotal(for: game), pairs: viewModel.pairsTotal(for: game))
+                                GameCellUIView(viewModel: viewModel, game: game)
                                     .padding(.top)
                             }
                         }
