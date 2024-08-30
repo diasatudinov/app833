@@ -16,23 +16,24 @@ struct TabUIView: View {
 //    @ObservedObject var tripsVM = TripsViewModel()
     
     var body: some View {
-        ZStack {
-            
-            switch selectedTab {
-            case 0:
-                Text("MAIN")
-                //StatisticsUIView(viewModel: profileVM)
-            case 1:
-                GameUIView(viewModel: GameViewModel())
-                //TripsUIView(viewModel: tripsVM)
-            case 2:
-                AchievementUIView(viewModel: AchievementViewModel())
-                //SettingsUIView()
-            case 3:
-                SettingsUIView()
-            default:
-                Text("default")
-            }
+        NavigationView {
+            ZStack {
+                
+                switch selectedTab {
+                case 0:
+                    Text("MAIN")
+                    //StatisticsUIView(viewModel: profileVM)
+                case 1:
+                    GameUIView(viewModel: GameViewModel())
+                    //TripsUIView(viewModel: tripsVM)
+                case 2:
+                    AchievementUIView(viewModel: AchievementViewModel())
+                    //SettingsUIView()
+                case 3:
+                    SettingsUIView()
+                default:
+                    Text("default")
+                }
                 VStack {
                     Spacer()
                     
@@ -42,8 +43,8 @@ struct TabUIView: View {
                             .frame(height: 84)
                             .cornerRadius(20)
                             .shadow(radius: 3.7)
-                            
-                            
+                        
+                        
                         HStack(spacing: 70) {
                             ForEach(0..<tabs.count) { index in
                                 Button(action: {
@@ -62,13 +63,13 @@ struct TabUIView: View {
                     }
                     
                 }.ignoresSafeArea()
-                .onAppear {
-                    //AppMetrica.reportEvent(name: "did_show_main_screen")
-                }
-            
+                    .onAppear {
+                        //AppMetrica.reportEvent(name: "did_show_main_screen")
+                    }
+                
+            }
         }
     }
-    
     private func icon(for index: Int) -> String {
         switch index {
         case 0: return "house.fill"
@@ -78,6 +79,7 @@ struct TabUIView: View {
         default: return ""
         }
     }
+    
 }
 
 
