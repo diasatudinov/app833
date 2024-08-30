@@ -25,6 +25,7 @@
 		2BF280452C80B19C00336415 /* GameDetailsUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF280442C80B19C00336415 /* GameDetailsUIView.swift */; };
 		2BF280472C80BAE100336415 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF280462C80BAE100336415 /* Game.swift */; };
 		2BF280492C80BB0400336415 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF280482C80BB0400336415 /* GameViewModel.swift */; };
+		2BF2804B2C81CBD900336415 /* GameAddUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF2804A2C81CBD900336415 /* GameAddUIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		2BF280442C80B19C00336415 /* GameDetailsUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailsUIView.swift; sourceTree = "<group>"; };
 		2BF280462C80BAE100336415 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		2BF280482C80BB0400336415 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
+		2BF2804A2C81CBD900336415 /* GameAddUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAddUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,6 +251,7 @@
 				2BF280402C7F47E400336415 /* GameUIView.swift */,
 				2BF280422C80AC4F00336415 /* GameCellUIView.swift */,
 				2BF280442C80B19C00336415 /* GameDetailsUIView.swift */,
+				2BF2804A2C81CBD900336415 /* GameAddUIView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				2BF280452C80B19C00336415 /* GameDetailsUIView.swift in Sources */,
 				2BCD937D2C74B83C0021A6F6 /* UsUIView.swift in Sources */,
 				2BCD937B2C74B7BF0021A6F6 /* ReOnboardingUIView.swift in Sources */,
+				2BF2804B2C81CBD900336415 /* GameAddUIView.swift in Sources */,
 				2BCD93882C74D6510021A6F6 /* SettingsViewModel.swift in Sources */,
 				2BF280412C7F47E400336415 /* GameUIView.swift in Sources */,
 				2BF280432C80AC4F00336415 /* GameCellUIView.swift in Sources */,
