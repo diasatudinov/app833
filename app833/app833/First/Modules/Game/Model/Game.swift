@@ -9,8 +9,8 @@ import Foundation
 
 struct Game: Identifiable, Hashable, Codable {
     var id = UUID()
-    let data: String
-    let stats: [Stat]
+    var data: String
+    var stats: [Stat]
     
 }
 
@@ -21,7 +21,7 @@ struct Stat: Identifiable, Hashable, Codable {
     let stroke: Int
 }
 
-struct Graph {
+struct Graph: Codable {
     let first: String
     let second: String
     let third: String

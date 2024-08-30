@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct GameCellUIView: View {
-    @State var date: String
-    @State var hits: String
-    @State var pairs: String
+    @ObservedObject var viewModel: GameViewModel
+    @State var game: Game
     var body: some View {
         ZStack {
             Color.clear
@@ -18,18 +17,18 @@ struct GameCellUIView: View {
                 
                 HStack {
                     VStack(spacing: 30) {
-                        Text(date)
+                        Text(game.data)
                             .font(.system(size: 20, weight: .semibold))
                         HStack(spacing: 23) {
-                            Text("\(hits) hit")
-                            Text("\(pairs) pair")
+                            Text("\(viewModel.hitsTotal(for: game)) hit")
+                            Text("\(viewModel.pairsTotal(for: game)) pair")
                         }.font(.system(size: 13))
                     }
                     
                     Spacer()
                     
-                    Button {
-                        
+                    NavigationLink {
+                        GameDetailsUIView(viewModel: viewModel, game: game)
                     } label: {
                         Text("More details")
                             .foregroundColor(.black)
@@ -55,5 +54,5 @@ struct GameCellUIView: View {
 }
 
 #Preview {
-    GameCellUIView(date: "01.08.2024", hits: "99", pairs: "101")
+    GameCellUIView(viewModel: GameViewModel(), game: Game(data: "", stats: []))
 }
