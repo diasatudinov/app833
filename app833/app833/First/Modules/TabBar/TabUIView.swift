@@ -11,7 +11,7 @@ struct TabUIView: View {
 
     @State var selectedTab = 0
     private let tabs = ["Main", "Game", "ACHIEVEMENT","Settings"]
-    
+    @ObservedObject var gameVM = GameViewModel()
 //    @ObservedObject var profileVM = ProfileViewModel()
 //    @ObservedObject var tripsVM = TripsViewModel()
     
@@ -21,10 +21,10 @@ struct TabUIView: View {
                 
                 switch selectedTab {
                 case 0:
-                    Text("MAIN")
+                    HomeUIView(homeVM: HomeViewModel(), viewModel: gameVM, selectedTab: $selectedTab)
                     //StatisticsUIView(viewModel: profileVM)
                 case 1:
-                    GameUIView(viewModel: GameViewModel())
+                    GameUIView(viewModel: gameVM)
                     //TripsUIView(viewModel: tripsVM)
                 case 2:
                     AchievementUIView(viewModel: AchievementViewModel())

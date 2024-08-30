@@ -101,6 +101,18 @@ class GameViewModel: ObservableObject {
         }
     }
     
+    func hitsAllTotal() -> String {
+        var sum = 0
+        games.forEach { game in
+            game.stats.forEach { stat in
+                sum += stat.stroke
+                
+            }
+            
+        }
+        return "\(sum)"
+    }
+    
     func hitsTotal(for game: Game) -> String {
         var sum = 0
         if let index = games.firstIndex(where: { $0.id == game.id }) {

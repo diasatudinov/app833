@@ -26,6 +26,10 @@
 		2BF280472C80BAE100336415 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF280462C80BAE100336415 /* Game.swift */; };
 		2BF280492C80BB0400336415 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF280482C80BB0400336415 /* GameViewModel.swift */; };
 		2BF2804B2C81CBD900336415 /* GameAddUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF2804A2C81CBD900336415 /* GameAddUIView.swift */; };
+		2BF280512C81E68B00336415 /* HomeUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF280502C81E68B00336415 /* HomeUIView.swift */; };
+		2BF280532C81F67E00336415 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF280522C81F67E00336415 /* HomeViewModel.swift */; };
+		2BF280552C81F7D100336415 /* EquipmentCellUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF280542C81F7D100336415 /* EquipmentCellUIView.swift */; };
+		2BF280572C81F7E600336415 /* Equipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF280562C81F7E600336415 /* Equipment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +53,10 @@
 		2BF280462C80BAE100336415 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		2BF280482C80BB0400336415 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		2BF2804A2C81CBD900336415 /* GameAddUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAddUIView.swift; sourceTree = "<group>"; };
+		2BF280502C81E68B00336415 /* HomeUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUIView.swift; sourceTree = "<group>"; };
+		2BF280522C81F67E00336415 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		2BF280542C81F7D100336415 /* EquipmentCellUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentCellUIView.swift; sourceTree = "<group>"; };
+		2BF280562C81F7E600336415 /* Equipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equipment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +127,7 @@
 		2BCD93762C74B7970021A6F6 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				2BF2804C2C81E65F00336415 /* Home */,
 				2BF2803C2C7F342600336415 /* Game */,
 				2BCD938B2C7C9E280021A6F6 /* Achievement */,
 				2BCD93842C74D62C0021A6F6 /* Settings */,
@@ -264,6 +273,41 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		2BF2804C2C81E65F00336415 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				2BF2804F2C81E67300336415 /* Model */,
+				2BF2804E2C81E66F00336415 /* View */,
+				2BF2804D2C81E66A00336415 /* ModelView */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		2BF2804D2C81E66A00336415 /* ModelView */ = {
+			isa = PBXGroup;
+			children = (
+				2BF280522C81F67E00336415 /* HomeViewModel.swift */,
+			);
+			path = ModelView;
+			sourceTree = "<group>";
+		};
+		2BF2804E2C81E66F00336415 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2BF280502C81E68B00336415 /* HomeUIView.swift */,
+				2BF280542C81F7D100336415 /* EquipmentCellUIView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2BF2804F2C81E67300336415 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2BF280562C81F7E600336415 /* Equipment.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -334,11 +378,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BF280532C81F67E00336415 /* HomeViewModel.swift in Sources */,
 				2BCD93692C74B2EC0021A6F6 /* ContentView.swift in Sources */,
 				2BF280472C80BAE100336415 /* Game.swift in Sources */,
 				2BCD938A2C74D6730021A6F6 /* SettingsUIView.swift in Sources */,
 				2BCD93802C74B8C10021A6F6 /* LoaderUIView.swift in Sources */,
+				2BF280572C81F7E600336415 /* Equipment.swift in Sources */,
+				2BF280552C81F7D100336415 /* EquipmentCellUIView.swift in Sources */,
 				2BF280492C80BB0400336415 /* GameViewModel.swift in Sources */,
+				2BF280512C81E68B00336415 /* HomeUIView.swift in Sources */,
 				2BCD93832C74D0040021A6F6 /* TabUIView.swift in Sources */,
 				2BCD93922C7C9EA30021A6F6 /* AchievementViewModel.swift in Sources */,
 				2BCD93672C74B2EC0021A6F6 /* app833App.swift in Sources */,
