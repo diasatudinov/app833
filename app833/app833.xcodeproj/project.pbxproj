@@ -30,6 +30,10 @@
 		2BF280532C81F67E00336415 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF280522C81F67E00336415 /* HomeViewModel.swift */; };
 		2BF280552C81F7D100336415 /* EquipmentCellUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF280542C81F7D100336415 /* EquipmentCellUIView.swift */; };
 		2BF280572C81F7E600336415 /* Equipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF280562C81F7E600336415 /* Equipment.swift */; };
+		2BF280592C862BEC00336415 /* EquipmentsUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF280582C862BEC00336415 /* EquipmentsUIView.swift */; };
+		2BF2805B2C862EFF00336415 /* NewEquipmentUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF2805A2C862EFE00336415 /* NewEquipmentUIView.swift */; };
+		2BF2805E2C86311600336415 /* Additional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF2805D2C86311600336415 /* Additional.swift */; };
+		2BF280602C8639D800336415 /* EquipmentDetailsUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF2805F2C8639D800336415 /* EquipmentDetailsUIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +61,10 @@
 		2BF280522C81F67E00336415 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		2BF280542C81F7D100336415 /* EquipmentCellUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentCellUIView.swift; sourceTree = "<group>"; };
 		2BF280562C81F7E600336415 /* Equipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equipment.swift; sourceTree = "<group>"; };
+		2BF280582C862BEC00336415 /* EquipmentsUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentsUIView.swift; sourceTree = "<group>"; };
+		2BF2805A2C862EFE00336415 /* NewEquipmentUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEquipmentUIView.swift; sourceTree = "<group>"; };
+		2BF2805D2C86311600336415 /* Additional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Additional.swift; sourceTree = "<group>"; };
+		2BF2805F2C8639D800336415 /* EquipmentDetailsUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentDetailsUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,8 +97,9 @@
 		2BCD93652C74B2EC0021A6F6 /* app833 */ = {
 			isa = PBXGroup;
 			children = (
-				2BCD93742C74B7880021A6F6 /* First */,
+				2BF2805C2C8630F500336415 /* Service */,
 				2BCD93752C74B78E0021A6F6 /* Second */,
+				2BCD93742C74B7880021A6F6 /* First */,
 				2BCD937E2C74B8AC0021A6F6 /* LoaderView */,
 				2BCD93662C74B2EC0021A6F6 /* app833App.swift */,
 				2BCD93682C74B2EC0021A6F6 /* ContentView.swift */,
@@ -296,6 +305,9 @@
 			children = (
 				2BF280502C81E68B00336415 /* HomeUIView.swift */,
 				2BF280542C81F7D100336415 /* EquipmentCellUIView.swift */,
+				2BF280582C862BEC00336415 /* EquipmentsUIView.swift */,
+				2BF2805A2C862EFE00336415 /* NewEquipmentUIView.swift */,
+				2BF2805F2C8639D800336415 /* EquipmentDetailsUIView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -306,6 +318,14 @@
 				2BF280562C81F7E600336415 /* Equipment.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		2BF2805C2C8630F500336415 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				2BF2805D2C86311600336415 /* Additional.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -378,16 +398,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BF2805B2C862EFF00336415 /* NewEquipmentUIView.swift in Sources */,
 				2BF280532C81F67E00336415 /* HomeViewModel.swift in Sources */,
 				2BCD93692C74B2EC0021A6F6 /* ContentView.swift in Sources */,
 				2BF280472C80BAE100336415 /* Game.swift in Sources */,
 				2BCD938A2C74D6730021A6F6 /* SettingsUIView.swift in Sources */,
 				2BCD93802C74B8C10021A6F6 /* LoaderUIView.swift in Sources */,
+				2BF280592C862BEC00336415 /* EquipmentsUIView.swift in Sources */,
 				2BF280572C81F7E600336415 /* Equipment.swift in Sources */,
 				2BF280552C81F7D100336415 /* EquipmentCellUIView.swift in Sources */,
 				2BF280492C80BB0400336415 /* GameViewModel.swift in Sources */,
 				2BF280512C81E68B00336415 /* HomeUIView.swift in Sources */,
 				2BCD93832C74D0040021A6F6 /* TabUIView.swift in Sources */,
+				2BF2805E2C86311600336415 /* Additional.swift in Sources */,
 				2BCD93922C7C9EA30021A6F6 /* AchievementViewModel.swift in Sources */,
 				2BCD93672C74B2EC0021A6F6 /* app833App.swift in Sources */,
 				2BCD93942C7C9FEE0021A6F6 /* AchievementUIView.swift in Sources */,
@@ -397,6 +420,7 @@
 				2BF2804B2C81CBD900336415 /* GameAddUIView.swift in Sources */,
 				2BCD93882C74D6510021A6F6 /* SettingsViewModel.swift in Sources */,
 				2BF280412C7F47E400336415 /* GameUIView.swift in Sources */,
+				2BF280602C8639D800336415 /* EquipmentDetailsUIView.swift in Sources */,
 				2BF280432C80AC4F00336415 /* GameCellUIView.swift in Sources */,
 				2BCD93902C7C9E580021A6F6 /* Achievement.swift in Sources */,
 			);
@@ -534,6 +558,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"app833/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "GolfStat - Win Guru";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -567,6 +592,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"app833/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "GolfStat - Win Guru";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

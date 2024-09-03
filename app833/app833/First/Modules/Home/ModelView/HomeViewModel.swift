@@ -8,7 +8,12 @@
 import Foundation
 
 class HomeViewModel: ObservableObject {
-    @Published var equipments: [Equipment] = [] {
+    @Published var equipments: [Equipment] = [
+        Equipment(name: "TaylorMade Driver", material: "Graphite", weight: "300 g", length: "45 inches"),
+        Equipment(name: "TaylorMade Driver", material: "Graphite", weight: "300 g", length: "45 inches"),
+        Equipment(name: "TaylorMade Driver", material: "Graphite", weight: "300 g", length: "45 inches"),
+        Equipment(name: "TaylorMade Driver", material: "Graphite", weight: "300 g", length: "45 inches")
+    ] {
         didSet {
             saveEquipments()
         }
@@ -19,6 +24,38 @@ class HomeViewModel: ObservableObject {
 
     init() {
         loadEquipments()
+    }
+    
+    func addEquipment(_ equipment: Equipment) {
+        equipments.append(equipment)
+    }
+    
+    func deleteEquipment(for equipment: Equipment) {
+        if let index = equipments.firstIndex(where: { $0.id == equipment.id }) {
+            equipments.remove(at: index)
+            
+        }
+        
+    }
+    
+//    func updateRating(for resort: ResortNatural, rating: Int) {
+//        if let index = resorts.firstIndex(where: { $0.id == resort.id }) {
+//            resorts[index].rating = rating
+//        }
+//    }
+    
+    func editEquipment(for equipment: Equipment) {
+        if let index = equipments.firstIndex(where: { $0.name == equipment.name }) {
+            print("EDIT")
+            equipments[index].image = equipment.image
+            equipments[index].name = equipment.name
+            equipments[index].material = equipment.material
+            equipments[index].weight = equipment.weight
+            equipments[index].length = equipment.length
+            
+        }
+        print("EDIT2")
+        
     }
     
     private func getDocumentsDirectory() -> URL {

@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct EquipmentCellUIView: View {
+    @ObservedObject var homeVM: HomeViewModel
+    @State var equipment: Equipment
     var body: some View {
         ZStack {
             
             HStack {
                 VStack(alignment: .leading) {
-                    Text("TaylorMade Driver")
+                    Text(equipment.name)
                         .font(.system(size: 17, weight: .semibold))
                     Text("Сharacteristics")
                         .font(.system(size: 15, weight: .semibold))
@@ -21,7 +23,7 @@ struct EquipmentCellUIView: View {
                         HStack {
                             Circle()
                                 .frame(width: 3, height: 3)
-                            Text("Graphite")
+                            Text(equipment.material)
                                 .font(.system(size: 12))
                             Spacer()
                         }
@@ -29,33 +31,46 @@ struct EquipmentCellUIView: View {
                         HStack {
                             Circle()
                                 .frame(width: 3, height: 3)
-                            Text("300 g")
+                            Text(equipment.weight)
                                 .font(.system(size: 12))
                             Spacer()
                         }
                     }.padding(.horizontal)
                     
-                    Text("More details")
-                        .padding(5)
-                        .padding(.horizontal, 35)
-                        .background(Color.red)
-                        .cornerRadius(10)
+                    NavigationLink {
+                        EquipmentDetailsUIView(viewModel: homeVM, equipment: equipment)
+                            
+                    } label: {
+                        Text("More details")
+                            .foregroundColor(.black)
+                            .padding(5)
+                            .padding(.horizontal, 35)
+                            .background(Color.white)
+                            .cornerRadius(10)
+                    }
                         
                 }
                 Spacer()
-                
-                Image("imageCool1")
-                    .resizable()
-                    .frame(width: 115 ,height: 147)
-                    .scaledToFill()
+                if let image = equipment.image {
+                    Image(uiImage: image)
+                        .resizable()
+                        .frame(width: 115 ,height: 147)
+                        .scaledToFill()
+                        .cornerRadius(10)
+                } else {
+                    Rectangle()
+                        .frame(width: 115 ,height: 147)
+                        .foregroundColor(.clear)
+                }
                     
                 
             }.padding(.horizontal, 12)
+                
             
         }.frame(height: 170)
     }
 }
 
 #Preview {
-    EquipmentCellUIView()
+    EquipmentCellUIView(homeVM: HomeViewModel(), equipment: Equipment(name: "", material: "", weight: "", length: ""))
 }

@@ -16,11 +16,15 @@ struct HomeUIView: View {
     @ObservedObject var viewModel: GameViewModel
     @State var selectedBtn: Btn = .all
     @Binding var selectedTab: Int
+    @State var showCards: Bool = true
+    
+    let cellColors: [Color] = [.blueCell, .purpleCell, .pinkCell]
+    
     var body: some View {
         ZStack {
             VStack(spacing: 0) {
                 HStack{
-                        Image("ava")
+                    Image("ava")
                     
                     VStack(spacing: 0) {
                         HStack {
@@ -28,7 +32,7 @@ struct HomeUIView: View {
                             Text("Robert")
                             Spacer()
                         }
-                            .font(.system(size: 11, weight: .semibold))
+                        .font(.system(size: 11, weight: .semibold))
                         HStack {
                             Text("Kick statistics")
                                 .font(.system(size: 11))
@@ -59,7 +63,7 @@ struct HomeUIView: View {
                                 .foregroundColor(.white)
                                 .font(.system(size: 17))
                             
-                           
+                            
                             
                             Spacer()
                         }.padding()
@@ -100,7 +104,8 @@ struct HomeUIView: View {
                         .font(.system(size: 28))
                     Spacer()
                     NavigationLink {
-                        Text("AAAA")
+                        EquipmentsUIView(homeVM: homeVM)
+                        
                     } label : {
                         Text("All equipment")
                             .font(.system(size: 15))
@@ -158,7 +163,7 @@ struct HomeUIView: View {
                     Spacer()
                 }
                 
-                if !homeVM.equipments.isEmpty {
+                if homeVM.equipments.isEmpty {
                     HStack {
                         Text("You don't have the equipment, add it")
                             .font(.system(size: 16, weight: .semibold))
@@ -167,28 +172,48 @@ struct HomeUIView: View {
                     }.padding(.top, 20)
                 } else {
                     VStack {
-                        
-                        
-                        EquipmentCellUIView().background(Color.blue).cornerRadius(20)
-                        EquipmentCellUIView().background(Color.blue).cornerRadius(20).overlay(
-                            RoundedRectangle(cornerRadius: 20)
-                                .stroke(Color.white, lineWidth: 4)
-                        ).padding(.top, -100)
-                        EquipmentCellUIView().background(Color.blue).cornerRadius(20).overlay(
-                            RoundedRectangle(cornerRadius: 20)
-                                .stroke(Color.white, lineWidth: 4)
-                        ).padding(.top, -100)
-                            
-                        
-                        
-                        
+                        if showCards {
+                            ForEach(homeVM.equipments.prefix(3).indices, id: \.self) { index in
+                                
+                                if index == 0 {
+                                    EquipmentCellUIView(homeVM: homeVM, equipment: homeVM.equipments[index])
+                                        .background(cellColors[index % cellColors.count])
+                                        .cornerRadius(20)
+                                        .disabled(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                                    
+                                } else {
+                                    EquipmentCellUIView(homeVM: homeVM, equipment: homeVM.equipments[index])
+                                        .background(cellColors[index % cellColors.count])
+                                        .cornerRadius(20)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 20)
+                                                .stroke(Color.white, lineWidth: 4)
+                                        )
+                                        .padding(.top, -95)
+                                        .disabled(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                                }
+                                
+                            }
+                        }
                         
                     }.padding(.top, 10)
+                        .onAppear {
+                            DispatchQueue.main.async {
+                                showCards = true
+                            }
+                        }
+                        .onDisappear {
+                            DispatchQueue.main.async {
+                                showCards = false
+                            }
+                        }
+                    
                 }
                 
                 Spacer()
             }.padding(.horizontal)
         }
+        
     }
 }
 

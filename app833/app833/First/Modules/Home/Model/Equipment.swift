@@ -13,7 +13,7 @@ struct Equipment: Identifiable, Hashable, Codable{
     var name: String
     var material: String
     var weight: String
-    var length: Int
+    var length: String
     
     enum CodingKeys: String, CodingKey {
         case id, imageData, name, material, weight, length
