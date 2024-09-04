@@ -8,20 +8,7 @@
 import Foundation
 
 class GameViewModel: ObservableObject {
-    @Published var games: [Game] = [
-        Game(data: "01.08.2024", stats: [
-            Stat(hole: 1, par: 1, stroke: 1),
-            Stat(hole: 1, par: 4, stroke: 8),
-            Stat(hole: 1, par: 6, stroke: 6),
-            Stat(hole: 1, par: 8, stroke: 2)]),
-        Game(data: "20.05.2024", stats: [
-            Stat(hole: 1, par: 1, stroke: 1),
-            Stat(hole: 1, par: 5, stroke: 2),
-            Stat(hole: 1, par: 7, stroke: 5),
-            Stat(hole: 1, par: 5, stroke: 4)
-        ])
-        
-    ] {
+    @Published var games: [Game] = [ ] {
         didSet {
             saveGames()
         }

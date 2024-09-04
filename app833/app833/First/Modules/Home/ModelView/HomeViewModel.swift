@@ -9,10 +9,6 @@ import Foundation
 
 class HomeViewModel: ObservableObject {
     @Published var equipments: [Equipment] = [
-        Equipment(name: "TaylorMade Driver", material: "Graphite", weight: "300 g", length: "45 inches"),
-        Equipment(name: "TaylorMade Driver", material: "Graphite", weight: "300 g", length: "45 inches"),
-        Equipment(name: "TaylorMade Driver", material: "Graphite", weight: "300 g", length: "45 inches"),
-        Equipment(name: "TaylorMade Driver", material: "Graphite", weight: "300 g", length: "45 inches")
     ] {
         didSet {
             saveEquipments()

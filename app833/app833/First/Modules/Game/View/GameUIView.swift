@@ -235,7 +235,7 @@ struct HalfScreenSheetView: View {
                             }
                         }
                     }
-                    if false {
+                    if viewModel.games.isEmpty {
                         VStack {
                             Image(systemName: "figure.golf")
                                 .font(.system(size: 100))
