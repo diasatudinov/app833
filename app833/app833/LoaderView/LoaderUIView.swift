@@ -25,10 +25,12 @@ struct LoaderUIView: View {
     var body: some View {
         if isLoadingView {
             ZStack {
-                Color.white
+                Color.loaderBg
                     .ignoresSafeArea()
                 
                 VStack {
+                    Spacer()
+                    Image("logog833")
                     Spacer()
                     ZStack {
                         ProgressView()
