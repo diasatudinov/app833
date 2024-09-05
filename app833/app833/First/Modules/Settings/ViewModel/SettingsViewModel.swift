@@ -26,7 +26,7 @@ class SettingsViewModel: ObservableObject {
     }
     
     func openUsagePolicy() {
-        guard let url = URL(string: "https://www.termsfeed.com/live/61db5db7-6501-43e9-8422-5c4aa3e6ddd0") else { return }
+        guard let url = URL(string: Info().usagePolicy) else { return }
         if UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }

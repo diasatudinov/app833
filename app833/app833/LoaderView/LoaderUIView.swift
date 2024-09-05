@@ -12,6 +12,16 @@ struct LoaderUIView: View {
     @State private var timer: Timer?
     @State private var isLoadingView: Bool = true
 
+    @State private var apiResponse: ApiResponse?
+    private let apiService = ApiService()
+    @State private var errorMessage: String?
+    
+    
+    @AppStorage("isRequested") var isRequested: Bool = false
+    @AppStorage("isBlock") var isBlock: Bool = true
+    @State var isDead: Bool = true
+    
+    
     var body: some View {
         if isLoadingView {
             ZStack {
@@ -33,6 +43,8 @@ struct LoaderUIView: View {
                 }
                 .onAppear {
                     startTimer()
+                    check_data()
+                    fetch()
                 }
                 .onDisappear {
                     timer?.invalidate()
@@ -41,11 +53,24 @@ struct LoaderUIView: View {
             }
             
         } else {
-            if true {
-                ReOnboardingUIView()
-                
+            
+            if let response = apiResponse {
+                if response.canUpdate {
+                    ReOnboardingUIView()
+                        .onAppear {
+                            print(response.canUpdate)
+                        }
+                } else {
+                    UsUIView(decodeString: response.isUncapitalized)
+                        .onAppear {
+                            print(response.canUpdate)
+                        }
+                }
             } else {
-                UsUIView()
+                ReOnboardingUIView()
+                    .onAppear {
+                        print("Error")
+                    }
             }
             
         }
@@ -59,6 +84,44 @@ struct LoaderUIView: View {
             } else {
                 timer.invalidate()
                 isLoadingView.toggle()
+            }
+        }
+    }
+    
+    func fetch() {
+        apiService.fetchData { result in
+            switch result {
+            case .success(let data):
+                self.apiResponse = data
+            case .failure(let error):
+                self.errorMessage = error.localizedDescription
+            }
+        }
+    }
+    
+    private func check_data() {
+        
+        guard isRequested == false else {
+            
+            return
+        }
+        
+        let networkService = NetworkService()
+        let deviceData = DeviceInfo.collectData()
+        
+        networkService.sendRequest(endpoint: deviceData) { result in
+            
+            isRequested = true
+            
+            switch result {
+                
+            case .success(let success):
+                
+                self.isBlock = success
+                
+            case .failure(_):
+                
+                self.isBlock = self.isDead
             }
         }
     }

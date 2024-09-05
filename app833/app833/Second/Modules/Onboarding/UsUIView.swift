@@ -7,6 +7,7 @@
 
 import SwiftUI
 import StoreKit
+import OneSignalFramework
 
 struct UsUIView: View {
     @State private var progress: Double = 0.0
@@ -16,6 +17,7 @@ struct UsUIView: View {
     @State private var pageNum: Int = 1
     @AppStorage("onboardingShowed") var onboardingShowed: Bool = false
 
+    @State var decodeString: String
     var body: some View {
         if !onboardingShowed {
             if pageNum < 3 {
@@ -165,8 +167,11 @@ struct UsUIView: View {
                                 }
                                 Spacer()
                                 Button {
-                                    isNotificationView = false
-                                    onboardingShowed = true
+                                    OneSignal.Notifications.requestPermission({ accepted in
+                                        print("User accepted notifications: \(accepted)")
+                                        isNotificationView = false
+                                        onboardingShowed = true
+                                    }, fallbackToSettings: true)
                                 } label: {
                                     
                                     ZStack(alignment: .center) {
@@ -189,11 +194,11 @@ struct UsUIView: View {
                     }
                     
                 } else {
-                   Text("Next screen")
+                    WebUIView(decodeString: decodeString)
                 }
             }
         } else {
-            Text("Next screen")
+            WebUIView(decodeString: decodeString)
         }
     }
     
@@ -216,5 +221,5 @@ struct UsUIView: View {
 }
 
 #Preview {
-    UsUIView()
+    UsUIView(decodeString: "aHR0cHM6Ly9wb2RsYW9ybGYuc3BhY2UvUmtZVzF5eW0")
 }

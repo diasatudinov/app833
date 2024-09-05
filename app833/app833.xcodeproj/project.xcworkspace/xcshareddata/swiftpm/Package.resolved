@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "apphudsdk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apphud/ApphudSDK",
+      "state" : {
+        "revision" : "8b0a05fabec1a202b4ea716391c40caf5bd3fb1a",
+        "version" : "3.4.0"
+      }
+    },
+    {
+      "identity" : "onesignal-ios-sdk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/OneSignal/OneSignal-iOS-SDK",
+      "state" : {
+        "revision" : "a197d9de8992ba2f0b43c75ea52a507e18f95681",
+        "version" : "5.2.4"
+      }
+    }
+  ],
+  "version" : 2
+}

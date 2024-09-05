@@ -9,6 +9,8 @@ import SwiftUI
 
 @main
 struct app833App: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     var body: some Scene {
         WindowGroup {
             LoaderUIView()
